@@ -7,8 +7,11 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" type="text/css" href="styles.css">
+        <meta charset="UTF-8"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="dist/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
         <title>Einsatz</title>
     </head>
     <body>
@@ -17,60 +20,24 @@ and open the template in the editor.
         ?>
         <div>
         <h1>Zugführer</h1>
-        <table border="0">
-          
-           <tr>
-            <td><a href="#" class="button turquoise"><span>✓</span>Michael May</a></td>
-            <td><a href="#" class="button turquoise"><span>✓</span>Mario Mok</a></td>
-            <td><a href="#" class="button turquoise"><span>✓</span>Klaus Kienle</a></td>
-          </tr>
-          
-        </table>
+        
         
         <h1>Gruppenführer</h1>
-        <table border="0">
-          
-           <tr>
-            <td><a href="#" class="button"><span>✓</span>Marcel Kessler</a></td>
-            <td><a href="#" class="button"><span>✓</span>Jan-Eric Jung</a></td>
-            <td><a href="#" class="button"><span>✓</span>Daniel Anand</a></td
-             <td><a href="#" class="button"><span>✓</span>TEST</a></td>
-          </tr>
-          <tr>
-            <td><a href="#" class="button"><span>✓</span>Markus Schmid</a></td>
-            <td><a href="#" class="button"><span>✓</span>Michael Hemminger</a></td>
-            <td><a href="#" class="button"><span>✓</span>Paul Leonidis</a></td>
-          </tr>
-        </table>
+      
         
         <h1>Mannschaft</h1>
-        <table border="0">
-          
-           <tr>
-            <td><a href="#" class="button red"><span>✓</span>Sebastian Lichtenberger</a></td>
-            <td><a href="#" class="button red"><span>✓</span>Thore Braun</a></td>
-            <td><a href="#" class="button red"><span>✓</span>Stefan Fischer</a></td>
-          </tr>
-          <tr>
-            <td><a href="#" class="button red"><span>✓</span>Max Kaltmaier</a></td>
-            <td><a href="#" class="button red"><span>✓</span>Stefanie Dietz</a></td>
-            <td><a href="#" class="button red"><span>✓</span>Alexander Mok</a></td>
-          </tr> 
-          
-        </table>
+       
        
         </div>
         
         
         
         
-        
+     
        
-        
+    
         
 
-<div class="copyright">
-  Created by <a href="http://www.fwpolice.com">The Fireworks Police</a>   
-</div>
+
     </body>
 </html>
