@@ -33,7 +33,8 @@ and open the template in the editor.
            <tr>
             <td><a href="#" class="button"><span>✓</span>Marcel Kessler</a></td>
             <td><a href="#" class="button"><span>✓</span>Jan-Eric Jung</a></td>
-            <td><a href="#" class="button"><span>✓</span>Daniel Anand</a></td>
+            <td><a href="#" class="button"><span>✓</span>Daniel Anand</a></td
+             <td><a href="#" class="button"><span>✓</span>TEST</a></td>
           </tr>
           <tr>
             <td><a href="#" class="button"><span>✓</span>Markus Schmid</a></td>
