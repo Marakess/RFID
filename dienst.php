@@ -4,7 +4,11 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
+
+
 <html>
+
+
     <head>
         <meta charset="UTF-8"> 
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,8 +19,36 @@ and open the template in the editor.
     </head>
     <body onkeydown="print();">
         <?php
-        phpinfo();
+        
+        $servername = "localhost";
+        $username = "root";
+        $password = "HLF";
+        $dbname = "Mitglieder";
+
+// Create connection
+        $conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+
+        $sql = "SELECT Nachname FROM erfassung";
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            // output data of each row
+            while ($row = $result->fetch_assoc()) {
+                echo "id: " . $row["Nachname"] ;
+            }
+        } else {
+            echo "0 results";
+        }
+        $conn->close();
         ?>
+
+        
+
+
 
         <div class="container">
             <h1>Erfassung Anwesenheit <small>Dienst</small></h1>
@@ -27,15 +59,13 @@ and open the template in the editor.
         <div class="container">
             <div class="row">
                 <div class="col-md-1"><h4>Datum:</h4></div>
-                <div class="col-md-1">
-                    <h4> <script type="text/javascript">
-                        var jetzt = new Date();
-                        var Tag = jetzt.getDay();
-                        var Monat = jetzt.getMonth() + 1;
-                        var Jahr = jetzt.getFullYear();
-                        document.write(Tag + '.' + Monat + '.' + Jahr);
-                        </script></h4></div>
+                <div class="col-md-1"><h4> <?php
+                        $timestamp = time();
+                        $datum = date("d.m.Y", $timestamp);
+                        echo $datum;
+                        ?></h4></div>
             </div>
+
             <form class="form-horizontal">
 
 
@@ -97,8 +127,10 @@ and open the template in the editor.
 
 
             <tr>
-                <td>Kessler</td>
-                <td>Marcel</td>
+                <td>
+
+                </td>
+                <td>Test</td>
                 <td>19:30:22</td>
                 <td>0x1234567</td>
             </tr>
@@ -129,7 +161,7 @@ and open the template in the editor.
                 <span class="glyphicon glyphicon-user"></span> Manuell 
             </a></div>
         <div class="col-md-10"></div>
-      
+
 
     </div>
 
