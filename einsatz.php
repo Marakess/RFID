@@ -16,7 +16,7 @@ and open the template in the editor.
     </head>
     <body>
        <?php
-            phpinfo();
+           
         ?>
         <div>
         <h1>Zugführer</h1>
