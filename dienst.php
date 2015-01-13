@@ -4,7 +4,9 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-
+<?php
+static $rfid = '100890';
+?>
 
 <html>
 
@@ -18,35 +20,11 @@ and open the template in the editor.
         <title>Dienst Abt. Stadtmitte</title>
     </head>
     <body onkeydown="print();">
+
         <?php
-        
-        $servername = "localhost";
-        $username = "root";
-        $password = "HLF";
-        $dbname = "Mitglieder";
-
-// Create connection
-        $conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
-
-        $sql = "SELECT Nachname FROM erfassung";
-        $result = $conn->query($sql);
-
-        if ($result->num_rows > 0) {
-            // output data of each row
-            while ($row = $result->fetch_assoc()) {
-                echo "id: " . $row["Nachname"] ;
-            }
-        } else {
-            echo "0 results";
-        }
-        $conn->close();
         ?>
 
-        
+
 
 
 
@@ -101,50 +79,16 @@ and open the template in the editor.
             <tr>
                 <th>Nachname</th>
                 <th>Vorname</th>
-                <th>Loginzeit</th>
                 <th>ID</th>
+                <th>Loginzeit</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>May</td>
-                <td>Michael</td>
-                <td>19:30:22</td>
-                <td>0x1234567</td>
+            <tr>   
+                <?php include 'readName.php'; ?>
             </tr>
-            <tr>
-                <td>Kroll</td>
-                <td>Thomas</td>
-                <td>19:33:22</td>
-                <td>0x1234569</td>
-            </tr>
-            <tr>
-                <td>Schmid</td>
-                <td>Martin</td>
-                <td>19:45:22</td>
-                <td>0x9234567</td>
-            </tr>
-
-
-            <tr>
-                <td>
-
-                </td>
-                <td>Test</td>
-                <td>19:30:22</td>
-                <td>0x1234567</td>
-            </tr>
-            <tr>
-                <td>Fischer</td>
-                <td>Stefan</td>
-                <td>19:33:22</td>
-                <td>0x1234569</td>
-            </tr>
-            <tr>
-                <td>Lichtenberger</td>
-                <td>Sebastian</td>
-                <td>19:45:22</td>
-                <td>0x9234567</td>
+            <tr>   
+                <?php include 'readName.php'; ?>
             </tr>
         </tbody>
     </table>
