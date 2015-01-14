@@ -17,7 +17,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-$sql = "SELECT Nachname,Vorname,RFID FROM `".$tableid."`";
+$sql = "SELECT Nachname,Vorname,RFID,Login FROM `".$tableid."`";
 $result = $conn->query($sql);
 
 //aktuelle Uhrzeit für Loginreferenz
@@ -27,7 +27,7 @@ if ($result->num_rows > 0) {
     // output data of each row
     while ($row = $result->fetch_assoc()) {
         echo "<tr>";
-        echo "<td>" . $row["Nachname"] . "</td>" . "<td>" . $row["Vorname"] . "</td>" .  "<td>" . $row["RFID"] . "</td>" . "<td>" . $uhrzeit . "</td>";
+        echo "<td>" . $row["Nachname"] . "</td>" . "<td>" . $row["Vorname"] . "</td>" .  "<td>" . $row["RFID"] . "</td>" . "<td>" . $row["Login"]  . "</td>";
         echo "</tr>";
     }
 } else {
