@@ -5,7 +5,7 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <?php
-static $rfid = '100890';
+static $rfid = '271088';
 $tableid = $_GET["idtable"];
 
 ?>
