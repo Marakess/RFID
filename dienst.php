@@ -4,11 +4,6 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<?php
-static $rfid = '271088';
-$tableid = $_GET["idtable"];
-
-?>
 
 <html>
 
@@ -23,14 +18,34 @@ $tableid = $_GET["idtable"];
     </head>
     <body>
 
-       
-        <?php include 'readName.php'; ?>
-       
+        <?php
+        $tableid = $_GET['idtable'];
+
+        $rfid = $_GET['rfid'];
+        if (strlen($rfid >= 6)) {
+            include 'readName.php';
+        }
+        echo strlen($rfid);
+        ?>
+
+
 
 
         <div class="container">
-            <h1>Erfassung Anwesenheit <small>Dienst</small></h1>
+            <div class ="row">
+                <div class="col-md-6"></div>
+                <div class="col-md-6">
+                    <img src="pictures/schriftzug.gif" align="right" alt="Logo" width="200" >
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8">
+                    <h1>Anwesenheit <small>Dienst</small></h1>
+                </div>
+                <div class="col-md-4">
 
+                </div>
+            </div>
 
         </div>
 
@@ -40,7 +55,6 @@ $tableid = $_GET["idtable"];
                 <div class="col-md-1"><h4> <?php
         $timestamp = time();
         $datum = date("d.m.Y", $timestamp);
-        
         echo $datum;
         ?></h4></div>
             </div>
@@ -85,10 +99,11 @@ $tableid = $_GET["idtable"];
             </tr>
         </thead>
         <tbody>
-              
-        <?php include 'readTable.php'; ?>
-            
-            
+            <?php
+            //if (strlen($rfid >= 6)) {
+                include 'readTable.php';
+            //}
+            ?>
         </tbody>
     </table>
 </div>
@@ -108,19 +123,23 @@ $tableid = $_GET["idtable"];
 
     </div>
 
-
+    <form action="dienst.php" method="get">
+        <p>RFID: <input type="text" name="rfid" /></p>
+        <p> <input type="text" value="<?php echo $tableid ?>" name="idtable"></p>
+        <p><input type="submit" /></p>
+    </form>
 
 
 </div>
-
-
-
-
-
-
-
-
 </body>
+
+
+
+
+
+
+
+
 
 
 

@@ -27,6 +27,7 @@ if ($result->num_rows > 0) {
         $Nachname_found = $row["Nachname"];
         $Vorname_found = $row["Vorname"];  
         $RFID_found = $row["RFID"];
+        echo $Nachname_found;
     }
 } else {
     echo "0 results";
@@ -44,9 +45,10 @@ $sql = "INSERT INTO `".$tableid."` (Nachname, Vorname, RFID, Login)
 VALUES ('".$Nachname_found."','".$Vorname_found."','".$RFID_found."','".$uhrzeit."')";
 
 if ($conn->query($sql) === TRUE) {
-    echo "New record created successfully";
+    echo "Tabelle erstellt" .$tableid;
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
+    echo "Fehler beim Erstellen der Tabelle" .$tableid;
 }
 $conn->close();
 /* 

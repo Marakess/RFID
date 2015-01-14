@@ -5,10 +5,10 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <script>
-createTable(){
-    <?php include "createTable.php";?>
-    
-}
+    createTable(){
+<?php include "createTable.php"; ?>
+
+    }
 
 </script>
 
@@ -22,34 +22,34 @@ createTable(){
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     </head>
     <body>
-        
-       
+
+
         <div id="tablecreate"></div>
         <div class="container-fluid">
-         <div class="row">
-             <div class="col-sm-4"><h1>Erfassung <small>Einsatz/Dienst</small></h1></div>
-             <div class="col-sm-4"><p></p></div>
-             <div class="col-sm-4"><p></p></div>
-           
-        </div>
-        <div class="row">
-             <div class="col-sm-4"><h3>Abt. Stadtmitte</h3></div>
-             <div class="col-sm-4"><p></p></div>
-             <div class="col-sm-4"><p></p></div>
-           
-        </div>
-          
-         
+            <div class="row">
+                <div class="col-sm-4"><h1>Erfassung <small>Einsatz/Dienst</small></h1></div>
+                <div class="col-sm-4"><p></p></div>
+                <div class="col-sm-4"><p></p></div>
+
+            </div>
+            <div class="row">
+                <div class="col-sm-4"><h3>Abt. Stadtmitte</h3></div>
+                <div class="col-sm-4"><p></p></div>
+                <div class="col-sm-4"><p></p></div>
+
+            </div>
+
+
             <div class="row">
                 <div class="col-lg-4"><a href='einsatz.php'   class='btn btn-danger btn-lg btn-block' role='button'>Einsatz (not working)</a></div>
-                <div class="col-lg-4"><a <?php echo "href='dienst.php?idtable=" . $namestring . "'";?> onclick="createTable()" class="btn btn-warning btn-lg btn-block">Dienst (beta)</a></div>
-             <div class="col-lg-4"><button type="button" class="btn btn-primary btn-lg btn-block">Sonstiges (not working)</button></div>
-           
+                <div class="col-lg-4"><a <?php echo "href='dienst.php?rfid=0&idtable=" . $namestring . "'"; ?> onclick="createTable()" class="btn btn-warning btn-lg btn-block">Dienst (beta)</a></div>
+                <div class="col-lg-4"><button type="button" class="btn btn-primary btn-lg btn-block">Sonstiges (not working)</button></div>
+
+            </div>
+
+
+
         </div>
-            
-         
-        
-      </div>
 
 
 
