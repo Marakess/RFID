@@ -6,6 +6,8 @@ and open the template in the editor.
 -->
 <?php
 static $rfid = '100890';
+$tableid = $_GET["idtable"];
+
 ?>
 
 <html>
@@ -19,13 +21,11 @@ static $rfid = '100890';
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
         <title>Dienst Abt. Stadtmitte</title>
     </head>
-    <body onkeydown="print();">
+    <body>
 
-        <?php
-        ?>
-
-
-
+       
+        <?php include 'readName.php'; ?>
+       
 
 
         <div class="container">
@@ -38,10 +38,11 @@ static $rfid = '100890';
             <div class="row">
                 <div class="col-md-1"><h4>Datum:</h4></div>
                 <div class="col-md-1"><h4> <?php
-                        $timestamp = time();
-                        $datum = date("d.m.Y", $timestamp);
-                        echo $datum;
-                        ?></h4></div>
+        $timestamp = time();
+        $datum = date("d.m.Y", $timestamp);
+        
+        echo $datum;
+        ?></h4></div>
             </div>
 
             <form class="form-horizontal">
@@ -74,7 +75,7 @@ static $rfid = '100890';
 
 <div class="container" >
     <h3>Mannschaft</h3>         
-    <table class="table table-bordered table-condensed">
+    <table class="table table-bordered table-condensed" id="mannschaft">
         <thead>
             <tr>
                 <th>Nachname</th>
@@ -84,12 +85,10 @@ static $rfid = '100890';
             </tr>
         </thead>
         <tbody>
-            <tr>   
-                <?php include 'readName.php'; ?>
-            </tr>
-            <tr>   
-                <?php include 'readName.php'; ?>
-            </tr>
+              
+        <?php include 'readTable.php'; ?>
+            
+            
         </tbody>
     </table>
 </div>
@@ -121,15 +120,16 @@ static $rfid = '100890';
 
 
 
-
-
-
-
-
-
-
-
-
-
 </body>
+
+
+
+
+
+
+
+
+
+
+
 </html>
