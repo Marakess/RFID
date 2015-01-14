@@ -5,6 +5,11 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 
+<?php
+// Start the session
+session_start();
+?>
+
 <html>
 
 
@@ -22,9 +27,7 @@ and open the template in the editor.
         $tableid = $_GET['idtable'];
 
         $rfid = $_GET['rfid'];
-        if (strlen($rfid >= 6)) {
-            include 'readName.php';
-        }
+        include 'readName.php';
         echo strlen($rfid);
         ?>
 
@@ -123,9 +126,10 @@ and open the template in the editor.
 
     </div>
 
-    <form action="dienst.php" method="get">
+    <form action="dienst.php?idtable=<?php echo $_GET['idtable']; ?>" method="get">
         <p>RFID: <input type="text" name="rfid" /></p>
-        <p> <input type="text" value="<?php echo $tableid ?>" name="idtable"></p>
+        <!-- <p> <input type="text" value="<?php echo $tableid ?>" name="idtable"></p> -->
+        <p> <?php echo $tableid; ?></p>
         <p><input type="submit" /></p>
     </form>
 

@@ -11,6 +11,11 @@ and open the template in the editor.
     }
 
 </script>
+<?php
+// Start the session
+session_start();
+?>
+
 
 <html>
     <head>
@@ -42,7 +47,7 @@ and open the template in the editor.
 
             <div class="row">
                 <div class="col-lg-4"><a href='einsatz.php'   class='btn btn-danger btn-lg btn-block' role='button'>Einsatz (not working)</a></div>
-                <div class="col-lg-4"><a <?php echo "href='dienst.php?rfid=0&idtable=" . $namestring . "'"; ?> onclick="createTable()" class="btn btn-warning btn-lg btn-block">Dienst (beta)</a></div>
+                <div class="col-lg-4"><a <?php echo "href='dienst.php?rfid=&idtable=" . $namestring . "'"; ?> onclick="createTable()" class="btn btn-warning btn-lg btn-block">Dienst (beta)</a></div>
                 <div class="col-lg-4"><button type="button" class="btn btn-primary btn-lg btn-block">Sonstiges (not working)</button></div>
 
             </div>
