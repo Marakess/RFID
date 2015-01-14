@@ -1,14 +1,13 @@
+<?php
+// Start the session
+session_start();
+?>
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-
-<?php
-// Start the session
-session_start();
-?>
 
 <html>
 
@@ -24,7 +23,7 @@ session_start();
     <body>
 
         <?php
-        $tableid = $_GET['idtable'];
+       
 
         $rfid = $_GET['rfid'];
         include 'readName.php';
@@ -126,10 +125,10 @@ session_start();
 
     </div>
 
-    <form action="dienst.php?idtable=<?php echo $_GET['idtable']; ?>" method="get">
+    <form action="dienst.php" method="get">
         <p>RFID: <input type="text" name="rfid" /></p>
-        <!-- <p> <input type="text" value="<?php echo $tableid ?>" name="idtable"></p> -->
-        <p> <?php echo $tableid; ?></p>
+        <!-- <p> <input type="text" value="" name="idtable"></p> -->
+        <p> <?php echo $_SESSION["tableid"]; ?></p>
         <p><input type="submit" /></p>
     </form>
 

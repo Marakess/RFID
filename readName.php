@@ -45,14 +45,14 @@ if ($proceed) {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $sql = "INSERT INTO `" . $tableid . "` (Nachname, Vorname, RFID, Login)
+    $sql = "INSERT INTO `" . $_SESSION["tableid"] . "` (Nachname, Vorname, RFID, Login)
 VALUES ('" . $Nachname_found . "','" . $Vorname_found . "','" . $RFID_found . "','" . $uhrzeit . "')";
 
     if ($conn->query($sql) === TRUE) {
-        echo "Tabelle erstellt" . $tableid;
+        echo "Eintrag eingefügt" .$_SESSION["tableid"];
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
-        echo "Fehler beim Erstellen der Tabelle" . $tableid;
+        echo "Fehler beim einfügen in " . $_SESSION["tableid"];
     }
     $conn->close();
 }
