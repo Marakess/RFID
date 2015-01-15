@@ -1,6 +1,7 @@
 <?php
 // Start the session
 session_start();
+//include 'readRFID.php';
 ?>
 <!DOCTYPE html>
 <!--
@@ -10,8 +11,6 @@ and open the template in the editor.
 -->
 
 <html>
-
-
     <head>
         <meta charset="UTF-8"> 
         <meta name="viewport" content="width=device-width, initial-scale=1">
