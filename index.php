@@ -10,8 +10,9 @@ and open the template in the editor.
 -->
 <script>
     createTable(){
-<?php include "createTable.php"; ?>
-
+<?php include "createTable.php"; 
+$_SESSION["tableid"] = $namestring;
+?>
     }
 
 </script>
@@ -48,7 +49,7 @@ and open the template in the editor.
 
             <div class="row">
                 <div class="col-lg-4"><a href='einsatz.php'   class='btn btn-danger btn-lg btn-block' role='button'>Einsatz (not working)</a></div>
-                <div class="col-lg-4"><a <?php echo "href='dienst.php?rfid=&idtable=" . $namestring . "'"; $_SESSION["tableid"] = $namestring; ?> onclick="createTable()" class="btn btn-warning btn-lg btn-block">Dienst (beta)</a></div>
+                <div class="col-lg-4"><a  href='dienst.php?rfid=' onclick="createTable()" class="btn btn-warning btn-lg btn-block">Dienst (beta)</a></div>
                 <div class="col-lg-4"><button type="button" class="btn btn-primary btn-lg btn-block">Sonstiges (not working)</button></div>
 
             </div>

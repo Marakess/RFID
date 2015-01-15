@@ -1,14 +1,9 @@
 <?php
 // Start the session
 session_start();
-//include 'readRFID.php';
 ?>
-<script>
-    
-function myFunction() {
-   document.getElementById('rfid-input').focus()
-}
-</script>
+
+
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -16,7 +11,7 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 
-<html>
+<html onclick="getFocus()">
     <head>
         <meta charset="UTF-8"> 
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -44,10 +39,11 @@ and open the template in the editor.
                 <div class="col-md-8">
                     <h1>Anwesenheit <small>Dienst</small></h1>
                 </div>
-                <div class="col-md-4"><form action="dienst.php" method="get">
-                        <p>TagCode <input id="rfid-input" type="text" name="rfid" autofocus="autofocus" onblur="myFunction()" /></p>
+                <div class="col-md-4">
+                    <form action="dienst.php" method="get">
+                        <p>TagCode <input  type="text" name="rfid" autofocus="autofocus" id="demorfid" onblur="getFocus()"/></p>
                         <p>TableID <?php echo $_SESSION["tableid"]; ?></p>
-                        
+
                     </form>
 
                 </div>
@@ -56,13 +52,13 @@ and open the template in the editor.
         </div>
 
         <div class="container">
-            <div class="row">
+            <div class="row" >
                 <div class="col-md-1"><h4>Datum:</h4></div>
                 <div class="col-md-1"><h4> <?php
-                        $timestamp = time();
-                        $datum = date("d.m.Y", $timestamp);
-                        echo $datum;
-                        ?></h4></div>
+        $timestamp = time();
+        $datum = date("d.m.Y", $timestamp);
+        echo $datum;
+        ?></h4></div>
             </div>
 
             <form class="form-horizontal">
@@ -106,9 +102,9 @@ and open the template in the editor.
         </thead>
         <tbody>
             <?php
-            //if (strlen($rfid >= 6)) {
+            
             include 'readTable.php';
-            //}
+            
             ?>
         </tbody>
     </table>
@@ -129,28 +125,15 @@ and open the template in the editor.
 
     </div>
 
-
-
-
 </div>
+
+<script>
+
+    function getFocus() {
+        document.getElementById("demorfid").focus();
+    }
+</script>
+
 </body>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 </html>
