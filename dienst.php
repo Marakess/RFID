@@ -3,6 +3,12 @@
 session_start();
 //include 'readRFID.php';
 ?>
+<script>
+    
+function myFunction() {
+   document.getElementById('rfid-input').focus()
+}
+</script>
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -22,28 +28,27 @@ and open the template in the editor.
     <body>
 
         <?php
-       
-
         $rfid = $_GET['rfid'];
         include 'readName.php';
         echo strlen($rfid);
         ?>
 
-
-
-
         <div class="container">
             <div class ="row">
                 <div class="col-md-6"></div>
                 <div class="col-md-6">
-                    <img src="pictures/schriftzug.gif" align="right" alt="Logo" width="200" >
+                    <img src="pictures/schriftzug.gif" align="right" alt="Logo" width="300" >
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-8">
                     <h1>Anwesenheit <small>Dienst</small></h1>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4"><form action="dienst.php" method="get">
+                        <p>TagCode <input id="rfid-input" type="text" name="rfid" autofocus="autofocus" onblur="myFunction()" /></p>
+                        <p>TableID <?php echo $_SESSION["tableid"]; ?></p>
+                        
+                    </form>
 
                 </div>
             </div>
@@ -54,10 +59,10 @@ and open the template in the editor.
             <div class="row">
                 <div class="col-md-1"><h4>Datum:</h4></div>
                 <div class="col-md-1"><h4> <?php
-        $timestamp = time();
-        $datum = date("d.m.Y", $timestamp);
-        echo $datum;
-        ?></h4></div>
+                        $timestamp = time();
+                        $datum = date("d.m.Y", $timestamp);
+                        echo $datum;
+                        ?></h4></div>
             </div>
 
             <form class="form-horizontal">
@@ -102,7 +107,7 @@ and open the template in the editor.
         <tbody>
             <?php
             //if (strlen($rfid >= 6)) {
-                include 'readTable.php';
+            include 'readTable.php';
             //}
             ?>
         </tbody>
@@ -124,12 +129,7 @@ and open the template in the editor.
 
     </div>
 
-    <form action="dienst.php" method="get">
-        <p>RFID: <input type="text" name="rfid" /></p>
-        <!-- <p> <input type="text" value="" name="idtable"></p> -->
-        <p> <?php echo $_SESSION["tableid"]; ?></p>
-        <p><input type="submit" /></p>
-    </form>
+
 
 
 </div>
