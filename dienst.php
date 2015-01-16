@@ -4,12 +4,15 @@ session_start();
 ?>
 
 
+
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
+
+
 
 <html onclick="getFocus()">
     <head>
@@ -55,10 +58,10 @@ and open the template in the editor.
             <div class="row" >
                 <div class="col-md-1"><h4>Datum:</h4></div>
                 <div class="col-md-1"><h4> <?php
-        $timestamp = time();
-        $datum = date("d.m.Y", $timestamp);
-        echo $datum;
-        ?></h4></div>
+                        $timestamp = time();
+                        $datum = date("d.m.Y", $timestamp);
+                        echo $datum;
+                        ?></h4></div>
             </div>
 
             <form class="form-horizontal">
@@ -102,9 +105,7 @@ and open the template in the editor.
         </thead>
         <tbody>
             <?php
-            
             include 'readTable.php';
-            
             ?>
         </tbody>
     </table>
@@ -117,7 +118,7 @@ and open the template in the editor.
         <div class="col-md-2"> <a href="#" onclick="print();" class="btn btn-success btn-lg">
                 <span class="glyphicon glyphicon-print"></span> Drucken 
             </a></div>
-        <div class="col-md-2"><a href="#"  class="btn btn-primary btn-lg">
+        <div class="col-md-2"><a href="#" onclick="openWindowfixed('manualInput.php')"  class="btn btn-primary btn-lg" >
                 <span class="glyphicon glyphicon-user"></span> Manuell 
             </a></div>
         <div class="col-md-10"></div>
@@ -131,6 +132,11 @@ and open the template in the editor.
 
     function getFocus() {
         document.getElementById("demorfid").focus();
+    }
+
+    function openWindowfixed(name) {
+        window.open(name, 'Manuelle Eingabe', 'height=400,width=500,toolbar=0,location=0,menubar=0,resizable=0,scrollbars').focus();
+        return false;
     }
 </script>
 
