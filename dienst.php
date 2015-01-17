@@ -118,7 +118,7 @@ and open the template in the editor.
         <div class="col-md-2"> <a href="#" onclick="print();" class="btn btn-success btn-lg">
                 <span class="glyphicon glyphicon-print"></span> Drucken 
             </a></div>
-        <div class="col-md-2"><a href="#" onclick="openWindowfixed('manualInput.php')"  class="btn btn-primary btn-lg" >
+        <div class="col-md-2"><a href="#" onclick="openWindowfixed('manualInput.php?nachname=')"  class="btn btn-primary btn-lg" >
                 <span class="glyphicon glyphicon-user"></span> Manuell 
             </a></div>
         <div class="col-md-10"></div>
