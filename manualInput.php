@@ -13,17 +13,19 @@ and open the template in the editor.
 
 <html>
     <head>
-    
+
         <meta charset="UTF-8"> 
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" href="dist/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
         <title>Manuelle Eingabe</title>
-    
+
     </head>
 
-    <body onload="reloadMother()">
+    <body onload="reloadMother();
+            giveFeedback(feedback);">
+        <script>var feedback = 1;</script>
 
         <div class="container">
             <h2>Manuelle Eingabe</h2>
@@ -40,57 +42,61 @@ and open the template in the editor.
                         <input type="text" class="form-control" id="vn" name="vorname" placeholder="Vornamen eingeben">
                     </div>
                 </div>
-                <button type="submit" class="btn btn-default" onclick="addUser()"><span class="glyphicon glyphicon-plus"></span><span class="glyphicon glyphicon-user"></span>Hinzufügen</button>
+                <button type="submit" class="btn btn-default" onclick="addUser()"><span class="glyphicon glyphicon-plus"></span><span class="glyphicon glyphicon-user"></span> Hinzufügen</button>
             </form>
+        </div>
+        <div class="container">
             <div class="row">
                 <div class="col-md-3">
+                    <h3 id="ergebnis"></h3>
                 </div>
             </div>
-             <div class="row">
-                
-                    <h3 id="ergebnis">HIER</h3>
-                
-            </div>
             <div class="row">
                 <div class="col-md-3">
-                <button type="button" id="okButton" class="btn btn-success" disabled>Success</button>
+                    <button type="button" id="okButton" onclick="window.close();" class="btn btn-danger"> Schließen</button>
                 </div>
             </div>
 
         </div>
-        <script>giveFeedback();</script>
+
         <?php
-        if (strlen($_GET["nachname"])> 0)
-            {
+        if (strlen($_GET["nachname"]) > 0) {
             include 'readManual.php';
-            }
-        
+        }
         ?>
-        
+
         <script>
-            
+        
+
+
             function addUser() {
                 reloadMother();
-                
-                
+
+
             }
-            function reloadMother(){
-                opener.location.replace("dienst.php?rfid=") ;
-                
+            function reloadMother() {
+                opener.location.replace("dienst.php?rfid=");
+
             }
-            function giveFeedback() {
-                  document.getElementById("ergebnis").innerHTML = "Eintrag gefunden und eingetragen!";
-                  alert("Geschafft!");
-                  activateButton();
-            }      
-            
+            function giveFeedback(feedback) {
+                if (feedback == 2) {
+                    document.getElementById("ergebnis").innerHTML = "Eintrag gefunden und hinzugefügt!";
+                }
+                else if (feedback == 3) {
+                    document.getElementById("ergebnis").innerHTML = "Kein Eintrag gefunden!";
+                }
+                else if (feedback == 1){
+                    document.getElementById("ergebnis").innerHTML = "Erwarte Eingabe";
+                }
+            }
+
             function activateButton() {
                 document.getElementById("okButton").removeAttribute("disabled");
                 document.getElementById("okButton").setAttribute("enabled");
-                
+
             }
 
-         </script>
-            
+        </script>
+
     </body>
 </html>

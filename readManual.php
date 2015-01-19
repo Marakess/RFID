@@ -14,8 +14,7 @@ $conn = new mysqli($servername, $username, $password, "mitglieder");
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-$sql = "SELECT Nachname,Vorname FROM erfassung WHERE Nachname='$nachname'";
-    //. "AND Vorname ='$vorname" ;
+$sql = "SELECT Nachname,Vorname FROM erfassung WHERE Nachname='$nachname' AND Vorname ='$vorname'";
 $result = $conn->query($sql);
 
 //aktuelle Uhrzeit für Loginreferenz
@@ -31,11 +30,14 @@ if ($result->num_rows > 0) {
         $Nachname_found = $row["Nachname"];
         $Vorname_found = $row["Vorname"];
         $RFID_found = "MANUELL";
-        echo $Nachname_found;
+        //echo $Nachname_found;
+      
     }
 } else {
-    echo "Kein Eintrag gefunden";
+    //echo "Kein Eintrag gefunden";
+    echo "<script>var feedback = 3</script>";
     $proceed = false;
+    
 }
 $conn->close();
 
@@ -52,11 +54,12 @@ if ($proceed) {
 VALUES ('" . $Nachname_found . "','" . $Vorname_found . "','" . $RFID_found . "','" . $uhrzeit . "')";
 
     if ($conn->query($sql) === TRUE) {
-        echo "Eintrag eingefügt";
-        echo "";
+        //echo "Eintrag eingefügt";
+        echo "<script>var feedback = 2;</script>";
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
         echo "Fehler beim Einfügen in " . $_SESSION["tableid"];
+        echo "<script>var feedback = 5</script>";
     }
     $conn->close();
 }
