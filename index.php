@@ -48,9 +48,9 @@ $_SESSION["tableid"] = $namestring;
 
 
             <div class="row">
-                <div class="col-lg-4"><a href='einsatz.php'   class="btn btn-danger btn-lg btn-block disabled" role='button'>Einsatz (not working)</a></div>
-                <div class="col-lg-4"><a  href='dienst.php?rfid=' onclick="createTable()" class="btn btn-warning btn-lg btn-block">Dienst (beta)</a></div>
-                <div class="col-lg-4"><button type="button" class="btn btn-primary btn-lg btn-block disabled">Sonstiges (not working)</button></div>
+                <div class="col-lg-4"><a href='einsatz.php'   class="btn btn-danger btn-lg btn-block disabled" role='button'>Einsatz</a></div>
+                <div class="col-lg-4"><a  href='dienst.php?rfid=' onclick="createTable()" class="btn btn-warning btn-lg btn-block">Dienst</a></div>
+                <div class="col-lg-4"><button type="button" class="btn btn-primary btn-lg btn-block disabled">Sonstiges</button></div>
 
             </div>
 

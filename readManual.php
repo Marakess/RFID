@@ -43,6 +43,9 @@ $conn->close();
 
 // Wenn mit der RFID ein Eintrag gefunden
 if ($proceed) {
+     include 'checkentry.php';
+     
+     
 // Create connection
     $conn = new mysqli($servername, $username, $password, "dienste");
 // Check connection
@@ -50,6 +53,9 @@ if ($proceed) {
         die("Connection failed: " . $conn->connect_error);
     }
 
+    if ($entry_there == FALSE) {
+        
+    
     $sql = "INSERT INTO `" . $_SESSION["tableid"] . "` (Nachname, Vorname, RFID, Login)
 VALUES ('" . $Nachname_found . "','" . $Vorname_found . "','" . $RFID_found . "','" . $uhrzeit . "')";
 
@@ -62,4 +68,10 @@ VALUES ('" . $Nachname_found . "','" . $Vorname_found . "','" . $RFID_found . "'
         echo "<script>var feedback = 5</script>";
     }
     $conn->close();
+    }
+    
+    elseif ($entry_there == TRUE){
+        $conn->close();
+        echo "<script>var feedback = 6 </script>";
+    }
 }

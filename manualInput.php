@@ -88,6 +88,9 @@ and open the template in the editor.
                 else if (feedback == 1){
                     document.getElementById("ergebnis").innerHTML = "Erwarte Eingabe";
                 }
+                else if (feedback == 6) {
+                    document.getElementById("ergebnis").innerHTML = "Nutzer bereits angemeldet!";
+                }
             }
 
             function activateButton() {

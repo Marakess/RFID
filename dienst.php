@@ -23,7 +23,7 @@ and open the template in the editor.
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
         <title>Dienst Abt. Stadtmitte</title>
     </head>
-    <body>
+    <body onload="errorHandling(errorINT);">
         <script> var errorINT = 99;</script>
         <?php
         $rfid = $_GET['rfid'];
@@ -116,23 +116,26 @@ and open the template in the editor.
             <div class="row">
 
 
-                <div class="col-md-2"> <a href="#" onclick="print();" class="btn btn-success btn-lg">
+                <div class="col-md-1"> <a href="#" onclick="print();" class="btn btn-success">
                         <span class="glyphicon glyphicon-print"></span> Drucken 
                     </a></div>
-                <div class="col-md-2"><a href="#" onclick="openWindowfixed('manualInput.php?nachname=')"  class="btn btn-primary btn-lg" >
+                <div class="col-md-1"><a href="#" onclick="openWindowfixed('manualInput.php?nachname=')"  class="btn btn-primary" >
                         <span class="glyphicon glyphicon-user"></span> Manuell 
                     </a></div>
-                <div class="col-md-8">
-                    <p id="output"></p>
+                <div class="col-md-1"><a href="index.php" class="btn btn-danger" onclick="closeSession()" >
+                        <span class="glyphicon glyphicon-remove"></span> Beenden 
+                    </a></div>
+                    
+                <div class="col-md-2"><p id="output"></p></div>
+                    
                 </div>
-
-
             </div>
 
-        </div>
+       
 
         <script>
-            document.getElementbyId("output").innerHTML = errorHandling(errorINT);
+            
+            
                     function getFocus() {
                         document.getElementById("demorfid").focus();
                     }
@@ -147,9 +150,8 @@ and open the template in the editor.
                 switch (errorINT) {
                     case 0: //Eintrag bereits vorhanden
                         errorString = "Eintrag bereits vorhanden";
-                        window.alert(errorString);
-                       
-
+                        window.alert("Eintrag bereits vorhanden");
+      
                         break;
 
                     case 99:
@@ -166,7 +168,10 @@ and open the template in the editor.
                 return errorString;
             }
 
-
+            function closeSession();
+            {
+                <?php $session_stop()?>
+            }
         </script>
 
     </body>
