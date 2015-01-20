@@ -28,16 +28,22 @@ if ($result->num_rows > 0) {
         $Nachname_found = $row["Nachname"];
         $Vorname_found = $row["Vorname"];
         $RFID_found = $row["RFID"];
-        echo $Nachname_found;
+        
     }
 } else {
-    echo "Kein Eintrag gefunden";
+    
     $proceed = false;
 }
 $conn->close();
 
+
+
+    
+
+
 // Wenn mit der RFID ein Eintrag gefunden
 if ($proceed) {
+    include 'checkentry.php';
 // Create connection
     $conn = new mysqli($servername, $username, $password, "dienste");
 // Check connection
@@ -45,16 +51,24 @@ if ($proceed) {
         die("Connection failed: " . $conn->connect_error);
     }
 
+    
+    if ($entry_there == FALSE) {
     $sql = "INSERT INTO `" . $_SESSION["tableid"] . "` (Nachname, Vorname, RFID, Login)
 VALUES ('" . $Nachname_found . "','" . $Vorname_found . "','" . $RFID_found . "','" . $uhrzeit . "')";
 
     if ($conn->query($sql) === TRUE) {
-        echo "Eintrag eingefügt" .$_SESSION["tableid"];
+       
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
-        echo "Fehler beim einfügen in " . $_SESSION["tableid"];
+       
     }
     $conn->close();
+    }
+    else if ($entry_there == TRUE) {
+        $conn->close();
+        
+    }
+    
 }
 }
 /* 

@@ -6,31 +6,31 @@
  * and open the template in the editor.
  */
 
-$servername = "localhost";
-$username = "root";
-$password = "HLF";
-$tablename = $_SESSION["tableid"];
 
 
-$vorname = $_GET["vorname"];
-$nachname = $_GET["nachname"];
 
 
 // Create connection
-$conn = new mysqli($servername, $username, $password, $tablename);
+$conn = new mysqli($servername, $username, $password, "dienste");
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-$sql = "SELECT Nachname,Vorname FROM `" . $tablename . "` WHERE Nachname='$nachname' AND Vorname ='$vorname'";
-$result = $conn->query($sql);
 
+$sql = "SELECT Nachname,Vorname FROM `" . $_SESSION["tableid"] . "` WHERE Nachname='$Nachname_found' AND Vorname='$Vorname_found'";
 
-if ($result->num_rows > 0) {
+$result_check = $conn->query($sql);
+//echo "$result_check->num_rows";
+
+if ($result_check->num_rows > 0) {
     // output data of each row
-    static $entry_there = TRUE;
-} else {
+     $entry_there = TRUE;
+     echo "<script>errorINT = 0;</script>";
+    
    
-    static $entry_there = FALSE;
+   
+} elseif ($result_check->num_rows == 0) {
+    $entry_there = FALSE;  
+   
 }
 $conn->close();

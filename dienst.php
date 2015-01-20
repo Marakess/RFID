@@ -24,11 +24,12 @@ and open the template in the editor.
         <title>Dienst Abt. Stadtmitte</title>
     </head>
     <body>
-
+        <script> var errorINT = 99;</script>
         <?php
         $rfid = $_GET['rfid'];
+
         include 'readName.php';
-        echo strlen($rfid);
+        
         ?>
 
         <div class="container">
@@ -88,58 +89,86 @@ and open the template in the editor.
                 </div>
 
 
+
+            </form>
         </div>
-    </form>
-</div>
 
-<div class="container" >
-    <h3>Mannschaft</h3>         
-    <table class="table table-bordered table-condensed" id="mannschaft">
-        <thead>
-            <tr>
-                <th>Nachname</th>
-                <th>Vorname</th>
-                <th>ID</th>
-                <th>Loginzeit</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-            include 'readTable.php';
-            ?>
-        </tbody>
-    </table>
-</div>
+        <div class="container" >
+            <h3>Mannschaft</h3>         
+            <table class="table table-bordered table-condensed" id="mannschaft">
+                <thead>
+                    <tr>
+                        <th>Nachname</th>
+                        <th>Vorname</th>
+                        <th>ID</th>
+                        <th>Loginzeit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    include 'readTable.php';
+                    ?>
+                </tbody>
+            </table>
+        </div>
 
-<div class="container">
-    <div class="row">
+        <div class="container">
+            <div class="row">
 
 
-        <div class="col-md-2"> <a href="#" onclick="print();" class="btn btn-success btn-lg">
-                <span class="glyphicon glyphicon-print"></span> Drucken 
-            </a></div>
-        <div class="col-md-2"><a href="#" onclick="openWindowfixed('manualInput.php?nachname=')"  class="btn btn-primary btn-lg" >
-                <span class="glyphicon glyphicon-user"></span> Manuell 
-            </a></div>
-        <div class="col-md-10"></div>
+                <div class="col-md-2"> <a href="#" onclick="print();" class="btn btn-success btn-lg">
+                        <span class="glyphicon glyphicon-print"></span> Drucken 
+                    </a></div>
+                <div class="col-md-2"><a href="#" onclick="openWindowfixed('manualInput.php?nachname=')"  class="btn btn-primary btn-lg" >
+                        <span class="glyphicon glyphicon-user"></span> Manuell 
+                    </a></div>
+                <div class="col-md-8">
+                    <p id="output"></p>
+                </div>
 
 
-    </div>
+            </div>
 
-</div>
+        </div>
 
-<script>
+        <script>
+            document.getElementbyId("output").innerHTML = errorHandling(errorINT);
+                    function getFocus() {
+                        document.getElementById("demorfid").focus();
+                    }
 
-    function getFocus() {
-        document.getElementById("demorfid").focus();
-    }
+            function openWindowfixed(name) {
+                window.open(name, 'Manuelle Eingabe', 'height=400,width=500,toolbar=0,location=0,menubar=0,resizable=0,scrollbars').focus();
+                return false;
+            }
 
-    function openWindowfixed(name) {
-        window.open(name, 'Manuelle Eingabe', 'height=400,width=500,toolbar=0,location=0,menubar=0,resizable=0,scrollbars').focus();
-        return false;
-    }
-</script>
+            function errorHandling(errorINT) {
+                var errorString = "";
+                switch (errorINT) {
+                    case 0: //Eintrag bereits vorhanden
+                        errorString = "Eintrag bereits vorhanden";
+                        window.alert(errorString);
+                       
 
-</body>
+                        break;
+
+                    case 99:
+                        errorString = "Alles gut"
+                        
+                        break;
+                    default:
+                        errorString = "Fehler. Kontaktieren Sie den Admin";
+                       
+                        break;
+                }
+
+
+                return errorString;
+            }
+
+
+        </script>
+
+    </body>
 
 </html>
