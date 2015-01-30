@@ -14,7 +14,7 @@ and open the template in the editor.
 
 
 
-<html onclick="getFocus()">
+<html onclick="getFocus()" onload="getFocus()">
     <head>
         <meta charset="UTF-8"> 
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -23,13 +23,12 @@ and open the template in the editor.
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
         <title>Dienst Abt. Stadtmitte</title>
     </head>
-    <body onload="errorHandling(errorINT);">
+    <body onload="errorHandling(errorINT);" onclick="getFocus()">
         <script> var errorINT = 99;</script>
         <?php
         $rfid = $_GET['rfid'];
 
         include 'readName.php';
-        
         ?>
 
         <div class="container">
@@ -59,10 +58,10 @@ and open the template in the editor.
             <div class="row" >
                 <div class="col-md-1"><h4>Datum:</h4></div>
                 <div class="col-md-1"><h4> <?php
-                        $timestamp = time();
-                        $datum = date("d.m.Y", $timestamp);
-                        echo $datum;
-                        ?></h4></div>
+        $timestamp = time();
+        $datum = date("d.m.Y", $timestamp);
+        echo $datum;
+        ?></h4></div>
             </div>
 
             <form class="form-horizontal">
@@ -119,30 +118,33 @@ and open the template in the editor.
                 <div class="col-md-1"> <a href="#" onclick="print();" class="btn btn-success">
                         <span class="glyphicon glyphicon-print"></span> Drucken 
                     </a></div>
-                <div class="col-md-1"><a href="#" onclick="openWindowfixed('manualInput.php?nachname=')"  class="btn btn-primary" >
+                <div class="col-md-1"><a href="manualInput.php?nachname=" onclick="openWindowfixed(this.ref)"  class="btn btn-primary" >
                         <span class="glyphicon glyphicon-user"></span> Manuell 
                     </a></div>
                 <div class="col-md-1"><a href="index.php" class="btn btn-danger" onclick="closeSession()" >
                         <span class="glyphicon glyphicon-remove"></span> Beenden 
                     </a></div>
-                    
-                <div class="col-md-2"><p id="output"></p></div>
-                    
-                </div>
-            </div>
 
-       
+                <div class="col-md-2"><p id="output"></p></div>
+
+            </div>
+        </div>
+
+
 
         <script>
-            
-            
-                    function getFocus() {
-                        document.getElementById("demorfid").focus();
-                    }
+
+
+            function getFocus() {
+                document.getElementById("demorfid").focus();
+            }
 
             function openWindowfixed(name) {
                 window.open(name, 'Manuelle Eingabe', 'height=400,width=500,toolbar=0,location=0,menubar=0,resizable=0,scrollbars').focus();
                 return false;
+                
+                
+                
             }
 
             function errorHandling(errorINT) {
@@ -151,16 +153,16 @@ and open the template in the editor.
                     case 0: //Eintrag bereits vorhanden
                         errorString = "Eintrag bereits vorhanden";
                         window.alert("Eintrag bereits vorhanden");
-      
+
                         break;
 
                     case 99:
                         errorString = "Alles gut"
-                        
+
                         break;
                     default:
                         errorString = "Fehler. Kontaktieren Sie den Admin";
-                       
+
                         break;
                 }
 
@@ -170,7 +172,7 @@ and open the template in the editor.
 
             function closeSession();
             {
-                <?php $session_stop()?>
+<?php $session_stop() ?>
             }
         </script>
 
