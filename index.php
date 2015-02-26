@@ -25,10 +25,10 @@ and open the template in the editor.
 
         <script>
             function createTable(){
-<?php
-include "createTable.php";
-$_SESSION["tableid"] = $namestring;
-?>
+            <?php
+                include "createTable.php";
+                $_SESSION["tableid"] = $namestring;
+             ?>
             }
 
         </script>
