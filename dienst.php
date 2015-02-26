@@ -14,7 +14,7 @@ and open the template in the editor.
 
 
 
-<html onclick="getFocus()" onload="getFocus()">
+<html>
     <head>
         <meta charset="UTF-8"> 
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -23,10 +23,28 @@ and open the template in the editor.
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
         <title>Dienst Abt. Stadtmitte</title>
     </head>
-    <body onload="errorHandling(errorINT);" onclick="getFocus()">
-        <script> var errorINT = 99;</script>
+    <body onload="errorHandling(errorINT);">
+        <script>
+            function getFocus() {
+                setTimeout(function () {
+                    document.getElementById("eingabeRFID").focus();
+                }, 0);
+                //location.reload();
+            }
+            var errorINT = 99;</script>
         <?php
-        $rfid = $_GET['rfid'];
+        if (isset($_GET['rfid'])) {
+            
+            $rfid = $_GET['rfid'];
+        } else {
+            $rfid = '';
+        }
+
+        if (isset($_POST['dienstart'])) {
+
+            $_SESSION["dienstart_sess"] = $_POST['dienstart'];
+        }
+
 
         include 'readName.php';
         ?>
@@ -43,11 +61,10 @@ and open the template in the editor.
                     <h1>Anwesenheit <small>Dienst</small></h1>
                 </div>
                 <div class="col-md-4">
-                    <form action="dienst.php" method="get">
-                        <p>TagCode <input  type="text" name="rfid" autofocus="autofocus" id="demorfid" onblur="getFocus()"/></p>
-                        <p>TableID <?php echo $_SESSION["tableid"]; ?></p>
-
+                    <form action="dienst.php" method="get" >
+                        <p>TagCode <input  type="text" name="rfid" autofocus id="eingabeRFID" onblur="getFocus()"/></p>
                     </form>
+                    <p>TableID  <?php echo $_SESSION["tableid"]; ?></p>
 
                 </div>
             </div>
@@ -63,30 +80,41 @@ and open the template in the editor.
         echo $datum;
         ?></h4></div>
             </div>
+            <div class="row" >
+                <div class="col-md-1"><h4>Dienst:</h4></div>
+                <div class="col-md-3"><h4 id="dienstausgabe"><?php
+                        if (isset($_SESSION["dienstart_sess"])) {
+                            echo $_SESSION["dienstart_sess"];
+                        }
+        ?></h4></div>
 
-            <form class="form-horizontal">
+
+            </div>
+
+
+
+            <form class="form-horizontal" method="POST">
 
 
                 <div class="form-group">
                     <div class="col-md-6">
                         <label class="radio-inline">
-                            <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="LZ1" checked>LZ 1
+                            <input type="radio" name="dienstart" id="inlineRadio1" value="Löschzug 1" onclick="submit()">LZ 1
                         </label>
                         <label class="radio-inline">
-                            <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="LZ2">LZ 2
+                            <input type="radio" name="dienstart" id="inlineRadio2" value="Löschzug 2" onclick="submit()">LZ 2
                         </label>
                         <label class="radio-inline">
-                            <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="GF">GF/ZF
+                            <input type="radio" name="dienstart" id="inlineRadio3" value="Zug- und Gruppenführer" onclick="submit()">GF/ZF
                         </label>
                         <label class="radio-inline">
-                            <input type="radio" name="inlineRadioOptions" id="inlineRadio4" value="MA">Maschinisten
+                            <input type="radio" name="dienstart" id="inlineRadio4" value="Maschinisten" onclick="submit()">Maschinisten
                         </label>
                         <label class="radio-inline">
-                            <input type="radio" name="inlineRadioOptions" id="inlineRadio5" value="SON">Sonderdienst
+                            <input type="radio" name="dienstart" id="inlineRadio5" value="Sonderdienst" onclick="submit()">Sonderdienst
                         </label>
                     </div>
                 </div>
-
 
 
             </form>
@@ -134,17 +162,44 @@ and open the template in the editor.
 
         <script>
 
+            /* dienstfunc(num) {
+             
+             document.getElementById("inlineRadio1").setAttribute("checked",false);
+             document.getElementById("inlineRadio2").setAttribute("checked",false);
+             document.getElementById("inlineRadio3").setAttribute("checked",false);
+             document.getElementById("inlineRadio4").setAttribute("checked",false);
+             document.getElementById("inlineRadio5").setAttribute("checked",false);
+             
+             switch (num) {
+             case 1:
+             id = "inlineRadio1";
+             break;
+             
+             case 2:
+             id = "inlineRadio2";
+             break;
+             
+             case 3:
+             id = "inlineRadio3";
+             break;
+             
+             case 4:
+             id = "inlineRadio4";
+             break;
+             case 5:
+             id = "inlineRadio5";
+             break;
+             
+             }
+             
+             document.getElementById(id).setAttribute("checked",true);
+             
+             } */
 
-            function getFocus() {
-                document.getElementById("demorfid").focus();
-            }
 
             function openWindowfixed(name) {
                 window.open(name, 'Manuelle Eingabe', 'height=400,width=500,toolbar=0,location=0,menubar=0,resizable=0,scrollbars').focus();
                 return false;
-                
-                
-                
             }
 
             function errorHandling(errorINT) {
@@ -153,16 +208,13 @@ and open the template in the editor.
                     case 0: //Eintrag bereits vorhanden
                         errorString = "Eintrag bereits vorhanden";
                         window.alert("Eintrag bereits vorhanden");
-
                         break;
-
                     case 99:
                         errorString = "Alles gut"
 
                         break;
                     default:
                         errorString = "Fehler. Kontaktieren Sie den Admin";
-
                         break;
                 }
 
