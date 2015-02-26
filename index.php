@@ -24,11 +24,11 @@ and open the template in the editor.
     <body>
 
         <script>
-            function createTable(){
-            <?php
-                include "createTable.php";
-                $_SESSION["tableid"] = $namestring;
-             ?>
+            function createTable() {
+<?php
+include "createTable.php";
+$_SESSION["tableid"] = $namestring;
+?>
             }
 
         </script>
@@ -50,22 +50,37 @@ and open the template in the editor.
 
 
             <div class="row">
-                <div class="col-lg-4"><a href='einsatz.php'   class="btn btn-danger btn-lg btn-block disabled" role='button'>Einsatz</a></div>
-                <div class="col-lg-4"><a  href='dienst.php' onclick="createTable()" class="btn btn-warning btn-lg btn-block">Dienst</a></div>
-                <div class="col-lg-4"><button type="button" class="btn btn-primary btn-lg btn-block disabled">Sonstiges</button></div>
+
+                
+                <div class="col-lg-3"><a href='einsatz.php'   class="btn btn-danger btn-block disabled" role='button'>Einsatz</a></div>
+                <div class="col-lg-3"><a  href='dienst.php' onclick="createTable()" class="btn btn-warning btn-block">Dienst</a></div>
+                <div class="col-lg-3"><button type="button" class="btn btn-primary btn-block disabled">Sonstiges</button></div>
+                <div class="col-md-3">
+                    <ul class="nav nav-pills nav-stacked">
+                        <li class="active"><a href="#"><span class="glyphicon glyphicon-home"></span> Startseite</a></li>
+                        <li><a href="#"><span class="glyphicon glyphicon-search"></span> Suche</a></li>
+                        <li><a href="#"><span class="glyphicon glyphicon-stats"></span> Statistik</a></li>
+                        <li><a href="#"><span class="glyphicon glyphicon-fire"></span> Admin</a></li>
+                    </ul>
+                </div>
 
             </div>
+
+        </div>
+
+        <div class="container-fluid">
 
             <div class="row">
 
 
+
+                <div class="col-md-9"></div>
             </div>
+        </div>   
+    </div>
 
 
-        </div>
 
-
-
-    </body>
+</body>
 </html>
 
