@@ -8,14 +8,7 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<script>
-    createTable(){
-<?php include "createTable.php"; 
-$_SESSION["tableid"] = $namestring;
-?>
-    }
 
-</script>
 
 
 
@@ -30,6 +23,15 @@ $_SESSION["tableid"] = $namestring;
     </head>
     <body>
 
+        <script>
+            function createTable(){
+<?php
+include "createTable.php";
+$_SESSION["tableid"] = $namestring;
+?>
+            }
+
+        </script>
 
         <div id="tablecreate"></div>
         <div class="container-fluid">
@@ -54,6 +56,10 @@ $_SESSION["tableid"] = $namestring;
 
             </div>
 
+            <div class="row">
+
+
+            </div>
 
 
         </div>

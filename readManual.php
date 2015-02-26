@@ -14,6 +14,8 @@ $conn = new mysqli($servername, $username, $password, "mitglieder");
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
+
+include 'charset.php';  
 $sql = "SELECT Nachname,Vorname FROM erfassung WHERE Nachname='$nachname' AND Vorname ='$vorname'";
 $result = $conn->query($sql);
 
@@ -52,7 +54,7 @@ if ($proceed) {
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
-
+include 'charset.php'; 
     if ($entry_there == FALSE) {
         
     

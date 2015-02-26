@@ -17,6 +17,8 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
+include 'charset.php'; 
+
 $sql = "SELECT Nachname,Vorname FROM `" . $_SESSION["tableid"] . "` WHERE Nachname='$Nachname_found' AND Vorname='$Vorname_found'";
 
 $result_check = $conn->query($sql);

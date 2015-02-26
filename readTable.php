@@ -17,6 +17,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
+include 'charset.php'; 
 $sql = "SELECT Nachname,Vorname,RFID,Login FROM `".$_SESSION["tableid"]."` ORDER BY Nachname ASC";
 $result = $conn->query($sql);
 

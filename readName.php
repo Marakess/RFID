@@ -12,6 +12,7 @@ $conn = new mysqli($servername, $username, $password, "mitglieder");
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
+include 'charset.php';  
 $sql = "SELECT Nachname,Vorname,RFID FROM erfassung WHERE RFID = '$rfid'";
 $result = $conn->query($sql);
 
@@ -50,7 +51,7 @@ if ($proceed) {
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
-
+ include 'charset.php'; 
     
     if ($entry_there == FALSE) {
     $sql = "INSERT INTO `" . $_SESSION["tableid"] . "` (Nachname, Vorname, RFID, Login)

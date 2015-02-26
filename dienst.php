@@ -25,11 +25,11 @@ and open the template in the editor.
     </head>
     <body onload="errorHandling(errorINT);">
         <script>
-            function getFocus() {
+             function getFocus() {
                 setTimeout(function () {
                     document.getElementById("eingabeRFID").focus();
                 }, 0);
-                //location.reload();
+             
             }
             var errorINT = 99;</script>
         <?php
@@ -161,42 +161,8 @@ and open the template in the editor.
 
 
         <script>
-
-            /* dienstfunc(num) {
-             
-             document.getElementById("inlineRadio1").setAttribute("checked",false);
-             document.getElementById("inlineRadio2").setAttribute("checked",false);
-             document.getElementById("inlineRadio3").setAttribute("checked",false);
-             document.getElementById("inlineRadio4").setAttribute("checked",false);
-             document.getElementById("inlineRadio5").setAttribute("checked",false);
-             
-             switch (num) {
-             case 1:
-             id = "inlineRadio1";
-             break;
-             
-             case 2:
-             id = "inlineRadio2";
-             break;
-             
-             case 3:
-             id = "inlineRadio3";
-             break;
-             
-             case 4:
-             id = "inlineRadio4";
-             break;
-             case 5:
-             id = "inlineRadio5";
-             break;
-             
-             }
-             
-             document.getElementById(id).setAttribute("checked",true);
-             
-             } */
-
-
+           
+            
             function openWindowfixed(name) {
                 window.open(name, 'Manuelle Eingabe', 'height=400,width=500,toolbar=0,location=0,menubar=0,resizable=0,scrollbars').focus();
                 return false;

@@ -18,11 +18,12 @@ $dbname = "dienste";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
+ 
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-
+include 'charset.php'; 
 // sql to create table
 $sql = "CREATE TABLE `" . $namestring . "` (
 ID INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
