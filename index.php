@@ -52,15 +52,15 @@ $_SESSION["tableid"] = $namestring;
             <div class="row">
 
                 
-                <div class="col-lg-3"><a href='einsatz.php'   class="btn btn-danger btn-block disabled" role='button'>Einsatz</a></div>
-                <div class="col-lg-3"><a  href='dienst.php' onclick="createTable()" class="btn btn-warning btn-block">Dienst</a></div>
-                <div class="col-lg-3"><button type="button" class="btn btn-primary btn-block disabled">Sonstiges</button></div>
+                <div class="col-lg-3"><a href='einsatz.php'   class="btn btn-lg btn-danger btn-block disabled" role='button'>Einsatz</a></div>
+                <div class="col-lg-3"><a  href='dienst.php' onclick="createTable()" class="btn btn-lg btn-warning btn-block">Dienst</a></div>
+                <div class="col-lg-3"><button type="button" class="btn btn-lg btn-primary btn-block disabled">Sonstiges</button></div>
                 <div class="col-md-3">
                     <ul class="nav nav-pills nav-stacked">
-                        <li class="active"><a href="#"><span class="glyphicon glyphicon-home"></span> Startseite</a></li>
+                        <li class="active"><a href="index.php"><span class="glyphicon glyphicon-home"></span> Startseite</a></li>
                         <li><a href="#"><span class="glyphicon glyphicon-search"></span> Suche</a></li>
                         <li><a href="#"><span class="glyphicon glyphicon-stats"></span> Statistik</a></li>
-                        <li><a href="#"><span class="glyphicon glyphicon-fire"></span> Admin</a></li>
+                        <li><a href="admin/admin.php"><span class="glyphicon glyphicon-fire"></span> Admin</a></li>
                     </ul>
                 </div>
 
@@ -68,19 +68,7 @@ $_SESSION["tableid"] = $namestring;
 
         </div>
 
-        <div class="container-fluid">
-
-            <div class="row">
-
-
-
-                <div class="col-md-9"></div>
-            </div>
-        </div>   
-    </div>
-
-
-
+ 
 </body>
 </html>
 
