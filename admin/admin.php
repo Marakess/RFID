@@ -83,7 +83,7 @@ and open the template in the editor.
                         <li><a href="../index.php"><span class="glyphicon glyphicon-home"></span> Startseite</a></li>
                         <li><a href="#"><span class="glyphicon glyphicon-search"></span> Suche</a></li>
                         <li><a href="#"><span class="glyphicon glyphicon-stats"></span> Statistik</a></li>
-                        <li class="active"><a href="admin.php"><span class="glyphicon glyphicon-fire"></span> Admin</a></li>
+                        <li class="active"><a href="admin.php"><span class="glyphicon glyphicon-lock"></span> Admin</a></li>
                     </ul>
                 </div>
 

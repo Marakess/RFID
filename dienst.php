@@ -25,16 +25,16 @@ and open the template in the editor.
     </head>
     <body onload="errorHandling(errorINT);">
         <script>
-             function getFocus() {
+            function getFocus() {
                 setTimeout(function () {
                     document.getElementById("eingabeRFID").focus();
                 }, 0);
-             
+
             }
             var errorINT = 99;</script>
         <?php
         if (isset($_GET['rfid'])) {
-            
+
             $rfid = $_GET['rfid'];
         } else {
             $rfid = '';
@@ -75,10 +75,10 @@ and open the template in the editor.
             <div class="row" >
                 <div class="col-md-1"><h4>Datum:</h4></div>
                 <div class="col-md-1"><h4> <?php
-        $timestamp = time();
-        $datum = date("d.m.Y", $timestamp);
-        echo $datum;
-        ?></h4></div>
+                        $timestamp = time();
+                        $datum = date("d.m.Y", $timestamp);
+                        echo $datum;
+                        ?></h4></div>
             </div>
             <div class="row" >
                 <div class="col-md-1"><h4>Dienst:</h4></div>
@@ -86,7 +86,7 @@ and open the template in the editor.
                         if (isset($_SESSION["dienstart_sess"])) {
                             echo $_SESSION["dienstart_sess"];
                         }
-        ?></h4></div>
+                        ?></h4></div>
 
 
             </div>
@@ -146,9 +146,9 @@ and open the template in the editor.
                 <div class="col-md-1"> <a href="#" onclick="print();" class="btn btn-success">
                         <span class="glyphicon glyphicon-print"></span> Drucken 
                     </a></div>
-                <div class="col-md-1"><a href="manualInput.php?nachname=" onclick="openWindowfixed(this.ref)"  class="btn btn-primary" >
-                        <span class="glyphicon glyphicon-user"></span> Manuell 
-                    </a></div>
+                <div class="col-md-1"><button type="button" onclick="window.open('manualInput.php?nachname=', 'newwindow', config = 'height=400,width=500, toolbar=no, menubar=no, scrollbars=no, resizable=no,location=no, directories=no, status=no')"  class="btn btn-primary" >
+                        <span class="glyphicon glyphicon-user"></span> Manuell</button> 
+                </div>
                 <div class="col-md-1"><a href="index.php" class="btn btn-danger" onclick="closeSession()" >
                         <span class="glyphicon glyphicon-remove"></span> Beenden 
                     </a></div>
@@ -161,10 +161,10 @@ and open the template in the editor.
 
 
         <script>
-           
-            
+
+
             function openWindowfixed(name) {
-                window.open(name, 'Manuelle Eingabe', 'height=400,width=500,toolbar=0,location=0,menubar=0,resizable=0,scrollbars').focus();
+                window.open(name, 'Manuelle Eingabe', 'height=400,width=500,toolbar=0,location=0,menubar=0,resizable=0,scrollbars');
                 return false;
             }
 
