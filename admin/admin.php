@@ -2,23 +2,7 @@
 // Start the session
 
 // define variables and set to empty values
-        $usr = $pwd = "";
-        
 
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $usr = test_input($_POST["usr"]);
-            $pwd = test_input($_POST["pwd"]);
-           
-        }
-        
-        include 'userdata.php';
-        
-        function test_input($data) {
-            $data = trim($data);
-            $data = stripslashes($data);
-            $data = htmlspecialchars($data);
-            return $data;
-        }
         
         
         
@@ -65,11 +49,11 @@ and open the template in the editor.
                     <form role="form" method="post" action="control.php">
                         <div class="form-group">
                             <label for="usr">User:</label>
-                            <input type="text" class="form-control" id="usr">
+                            <input type="text" class="form-control" name="usr" id="usr">
                         </div>
                         <div class="form-group">
                             <label for="pwd">Passwort:</label>
-                            <input type="password" class="form-control" id="pwd">
+                            <input type="password" class="form-control" name="pwd" id="pwd">
                         </div>
                         <button type="submit" class="btn btn-default">Einloggen</button>
                     </form>

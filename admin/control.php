@@ -1,13 +1,34 @@
 <?PHP
-
 session_start();
+
+
+$usr = $pwd = "";
+
+
+if (isset($_POST["usr"])) {
+    $usr = test_input($_GET["usr"]);
+    $pwd = test_input($_GET["pwd"]);
+
+    echo $usr;
+    echo $pwd;
+    include 'userdata.php';
+}
+
+
+
+
 
 if (!(isset($_SESSION['login']) && $_SESSION['login'] != '')) {
 
-header ("Location: admin.php");
-
+  // header("Location: admin.php");
 }
 
+function test_input($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}
 ?>
 
 <!DOCTYPE html>
@@ -27,7 +48,7 @@ and open the template in the editor.
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     </head>
     <body>
-        
+
 
 
         <div class="container-fluid">
@@ -48,7 +69,7 @@ and open the template in the editor.
             <div class="row">
 
                 <div class="col-lg-6">
-                   Hier und so weiter...
+                    Hier und so weiter...
 
                 </div>
                 <div class="col-lg-3">
